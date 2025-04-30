@@ -34,6 +34,23 @@ if (document.querySelector('.comment__items')) {
 
     }
   });
+  function setEqualSlideHeights() {
+    const slides = document.querySelectorAll('.comment__item');
+    let maxHeight = 0;
+  
+    slides.forEach(slide => {
+      slide.style.height = 'auto'; 
+      const height = slide.offsetHeight;
+      if (height > maxHeight) maxHeight = height;
+    });
+  
+    slides.forEach(slide => {
+      slide.style.height = `${maxHeight}px`;
+    });
+  }
+  
+  setEqualSlideHeights();
+  window.addEventListener('resize', setEqualSlideHeights);
 }
 
 if (document.querySelectorAll('.question__item')[0]) {
@@ -45,7 +62,6 @@ if (document.querySelectorAll('.question__item')[0]) {
       questionItem[ind].classList.toggle('question__item-active');
     }
   });
-  console.log(9);
 }
 // index js end
 
